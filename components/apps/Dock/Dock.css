@@ -1,0 +1,9 @@
+.theme {
+  border: 2px solid var(--light-theme-primary-contrast);
+  background-color: var(--light-theme-primary);
+}
+
+.theme.dark {
+  border: 2px solid var(--dark-theme-primary-contrast);
+  background-color: var(--dark-theme-primary);
+}

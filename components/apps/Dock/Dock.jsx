@@ -1,18 +1,22 @@
 "use client";
 
 import { useSelector } from "react-redux";
+import "./Dock.css";
 
-export default function Dock() {
-  const theme = useSelector((state) => state.theme);
+const Dock = () => {
+  const theme = useSelector((state) => state.theme.theme);
 
-  const style =
-    theme === "dark"
-      ? "border border-amber-500 w-full h-full rounded-2xl"
-      : "border border-amber-500 w-full h-full rounded-2xl";
+  console.log(theme);
 
   return (
     <div className="fixed bottom-0 w-screen h-20 p-2.5">
-      <div className="border border-gray-400 bg-gray-800 opacity-50 w-full h-full rounded-2xl"></div>
+      <div
+        className={`theme ${
+          theme === "dark" ? `dark` : ``
+        } w-full h-full rounded-2xl backdrop-blur-2xl opacity-50`}
+      ></div>
     </div>
   );
-}
+};
+
+export default Dock;
