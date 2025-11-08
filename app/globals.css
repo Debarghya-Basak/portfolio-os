@@ -3,6 +3,7 @@
 :root {
   min-height: 100vh;
   min-width: 100vw;
+  background-color: darkolivegreen;
 
   --dark-theme-primary: #3a3a3f;
   --dark-theme-primary-50: #3a3a3f83;
