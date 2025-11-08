@@ -68,7 +68,7 @@ const Dock = () => {
               delay: 0,
             },
           }}
-          className="w-12 h-12 bg-gray-950 rounded-xl mr-4"
+          className="apps w-12 h-12 bg-gray-950 rounded-xl mr-4"
         ></motion.div>
       );
     }
@@ -84,19 +84,23 @@ const Dock = () => {
         type: "spring",
         duration: 0.8,
       }}
-      className="fixed bottom-0 w-screen h-25 p-2.5 min-w-[1000]"
+      className="dock-container fixed bottom-0 w-screen h-25 p-2.5 min-w-[1000]"
     >
       <div
-        className={`theme ${
+        className={`dock w-full h-full rounded-2xl backdrop-blur-2xl p-4 flex theme ${
           theme === "dark" ? `dark` : ``
-        } w-full h-full rounded-2xl backdrop-blur-2xl p-4 flex`}
+        } `}
       >
         <div className="app-container w-screen h-full flex items-center">
           {printDivs()}
         </div>
         <div className="info-container w-25 h-full flex-col items-center justify-center">
-          <div className="w-full flex justify-center">{formatTime(time)}</div>
-          <div className="w-full flex justify-center">{formatDate(time)}</div>
+          <div className="info w-full flex justify-center">
+            {formatTime(time)}
+          </div>
+          <div className="info w-full flex justify-center">
+            {formatDate(time)}
+          </div>
         </div>
       </div>
     </motion.div>
