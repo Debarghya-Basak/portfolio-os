@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import "./Dock.css";
 import { delay, motion, scale } from "framer-motion";
 import { useEffect, useState } from "react";
+import { BsBrowserSafari } from "react-icons/bs";
 
 const Dock = () => {
   const theme = useSelector((state) => state.theme.theme);
@@ -68,8 +69,11 @@ const Dock = () => {
               delay: 0,
             },
           }}
-          className="apps w-12 h-12 bg-gray-950 rounded-xl mr-4"
-        ></motion.div>
+          className="apps w-12 h-12 bg-gray-950 rounded-xl mr-4  flex items-center justify-center bg-radial from-[#87b3fa] to-[#4287f5] border-2 border-white"
+        >
+          <BsBrowserSafari className="w-10 h-10 fill-stone-800"/>
+
+        </motion.div>
       );
     }
 
@@ -91,14 +95,14 @@ const Dock = () => {
           theme === "dark" ? `dark` : ``
         } `}
       >
-        <div className="app-container w-screen h-full flex items-center">
+        <div className="app-container h-full flex items-center grow">
           {printDivs()}
         </div>
-        <div className="info-container w-25 h-full flex-col items-center justify-center">
+        <div className="info-container w-fit h-full flex-col items-center justify-center">
           <div className="info w-full flex justify-center">
             {formatTime(time)}
           </div>
-          <div className="info w-full flex justify-center">
+          <div className="info w-ful flex justify-center">
             {formatDate(time)}
           </div>
         </div>
