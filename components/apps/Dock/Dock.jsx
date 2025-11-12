@@ -4,11 +4,13 @@ import { useSelector } from "react-redux";
 import "./Dock.css";
 import { delay, motion, scale } from "framer-motion";
 import { useEffect, useState } from "react";
-import { BsBrowserSafari } from "react-icons/bs";
 
 const Dock = () => {
   const theme = useSelector((state) => state.theme.theme);
+  const apps = useSelector((state) => state.apps.apps)
+
   console.log(theme);
+  console.log(apps);
 
   //TIME CALCULATIONS
   const [time, setTime] = useState(new Date());
@@ -36,13 +38,12 @@ const Dock = () => {
     });
   };
 
-  const printDivs = () => {
-    const divs = [];
-
-    for (let i = 1; i <= 5; i++) {
-      divs.push(
+  const generateDivs = () => {
+    const sortedApps = [...apps].sort((a,b) => a.dockPos - b.dockPos);
+    return <>{sortedApps.map((app, i) => {
+      return (
         <motion.div
-          key={i}
+          key={app.id}
           initial={{ y: 100, opacity: 0 }}
           animate={{
             y: 0,
@@ -69,15 +70,13 @@ const Dock = () => {
               delay: 0,
             },
           }}
-          className="apps w-12 h-12 bg-gray-950 rounded-xl mr-4  flex items-center justify-center bg-radial from-[#87b3fa] to-[#4287f5] border-2 border-white"
+          className={`apps w-12 h-12 bg-gray-950 rounded-xl mr-4  flex items-center justify-center ${app.bg}`}
         >
-          <BsBrowserSafari className="w-10 h-10 fill-stone-800"/>
+          {app.icon}
 
         </motion.div>
-      );
-    }
-
-    return <>{divs}</>;
+      )
+    })}</>
   };
 
   return (
@@ -96,7 +95,7 @@ const Dock = () => {
         } `}
       >
         <div className="app-container h-full flex items-center grow">
-          {printDivs()}
+          {generateDivs()}
         </div>
         <div className="info-container w-fit h-full flex-col items-center justify-center">
           <div className="info w-full flex justify-center">

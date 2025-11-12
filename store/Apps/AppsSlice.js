@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { BsBrowserSafari } from "react-icons/bs";
+import { BsFolderFill, BsTerminalFill, BsGearFill, BsGlobe2 } from "react-icons/bs";
+import { FaFileCode, FaMusic, FaImage, FaComments, FaVideo } from "react-icons/fa";
 
 // Keep a Set of used IDs to ensure uniqueness
 const usedIds = new Set();
@@ -23,7 +24,7 @@ const initialState = {
         minHeight: 100,
         isDocked: true,
         dockPos: 0,
-        icon: <BsGlobe2 className="w-10 h-10 text-white drop-shadow-md" />,
+        icon: <BsGlobe2 className="w-8 h-8 text-white drop-shadow-md" />,
         bg: `bg-gradient-to-br from-[#3a7bd5] via-[#3a6073] to-[#16222A] border border-white/30 shadow-lg`,
 
     },
@@ -35,7 +36,7 @@ const initialState = {
         minHeight: 100,
         isDocked: true,
         dockPos: 1,
-        icon: <BsTerminalFill className="w-10 h-10 fill-lime-400" />,
+        icon: <BsTerminalFill className="w-8 h-8 fill-lime-400" />,
         bg: `bg-gradient-to-br from-[#1a1a1a] to-[#333333] border-2 border-lime-400`,
     },
     {
@@ -46,7 +47,7 @@ const initialState = {
         minHeight: 100,
         isDocked: true,
         dockPos: 2,
-        icon: <BsFolderFill className="w-10 h-10 fill-yellow-400" />,
+        icon: <BsFolderFill className="w-8 h-8 fill-yellow-400" />,
         bg: `bg-gradient-to-br from-[#f8d64e] to-[#fcb900] border-2 border-white`,
     },
     {
@@ -57,7 +58,7 @@ const initialState = {
         minHeight: 100,
         isDocked: true,
         dockPos: 3,
-        icon: <FaFileCode className="w-10 h-10 fill-sky-400" />,
+        icon: <FaFileCode className="w-8 h-8 fill-sky-400" />,
         bg: `bg-gradient-to-br from-[#1e3c72] to-[#2a5298] border-2 border-white`,
     },
     {
@@ -68,7 +69,7 @@ const initialState = {
         minHeight: 100,
         isDocked: true,
         dockPos: 4,
-        icon: <FaMusic className="w-10 h-10 fill-pink-500" />,
+        icon: <FaMusic className="w-8 h-8 fill-pink-500" />,
         bg: `bg-gradient-to-br from-[#ff9a9e] to-[#fad0c4] border-2 border-white`,
     },
     {
@@ -79,7 +80,7 @@ const initialState = {
         minHeight: 100,
         isDocked: true,
         dockPos: 5,
-        icon: <FaImage className="w-10 h-10 fill-purple-500" />,
+        icon: <FaImage className="w-8 h-8 fill-purple-500" />,
         bg: `bg-gradient-to-br from-[#c471f5] to-[#fa71cd] border-2 border-white`,
     },
     {
@@ -90,7 +91,7 @@ const initialState = {
         minHeight: 100,
         isDocked: true,
         dockPos: 6,
-        icon: <BsGearFill className="w-10 h-10 fill-gray-700" />,
+        icon: <BsGearFill className="w-8 h-8 fill-gray-700" />,
         bg: `bg-gradient-to-br from-[#cfd9df] to-[#e2ebf0] border-2 border-white`,
     },
     {
@@ -101,7 +102,7 @@ const initialState = {
         minHeight: 100,
         isDocked: true,
         dockPos: 7,
-        icon: <FaComments className="w-10 h-10 fill-green-400" />,
+        icon: <FaComments className="w-8 h-8 fill-green-400" />,
         bg: `bg-gradient-to-br from-[#00b09b] to-[#96c93d] border-2 border-white`,
     },
     {
@@ -112,17 +113,19 @@ const initialState = {
         minHeight: 100,
         isDocked: true,
         dockPos: 8,
-        icon: <FaVideo className="w-10 h-10 fill-red-500" />,
+        icon: <FaVideo className="w-8 h-8 fill-red-500" />,
         bg: `bg-gradient-to-br from-[#f85032] to-[#e73827] border-2 border-white`,
     },
     ]
 }
 
 
-export const AppsSlice = createSlice({
+export const appsSlice = createSlice({
     name: 'apps',
     initialState,
     reducers: {
 
     }
 })
+
+export default appsSlice.reducer;
