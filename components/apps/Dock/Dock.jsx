@@ -38,12 +38,15 @@ const Dock = () => {
     });
   };
 
+  //GENERATE DOCK APPS
   const generateDivs = () => {
     const sortedApps = [...apps].sort((a,b) => a.dockPos - b.dockPos);
     return <>{sortedApps.map((app, i) => {
       return (
         <motion.div
           key={app.id}
+          onClick={openWindow()}
+
           initial={{ y: 100, opacity: 0 }}
           animate={{
             y: 0,
@@ -70,14 +73,24 @@ const Dock = () => {
               delay: 0,
             },
           }}
-          className={`apps w-12 h-12 bg-gray-950 rounded-xl mr-4  flex items-center justify-center ${app.bg}`}
+          className={`apps w-12 h-12 bg-gray-950 rounded-xl mr-4  flex items-center justify-center group ${app.bg}`}
         >
+          <div className="absolute -translate-y-15 bg-gray-900/90 text-white text-xs px-3 py-1.5 rounded-lg
+           opacity-0 group-hover:opacity-100 group-[mousedown]:opacity-0 transition-opacity 
+           whitespace-nowrap pointer-events-none">
+              {app.name}
+          </div>
+
           {app.icon}
 
         </motion.div>
       )
     })}</>
   };
+
+  const openWindow = () => {
+    
+  }
 
   return (
     <motion.div
