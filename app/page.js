@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <Provider store={store}>
       <Window />
-      <Dock/>
+      <Dock />
     </Provider>
   );
 }

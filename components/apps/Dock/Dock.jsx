@@ -4,10 +4,14 @@ import { useSelector } from "react-redux";
 import "./Dock.css";
 import { delay, motion, scale } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { openWindow } from "@/store/Windows/WindowsSlice";
 
 const Dock = () => {
   const theme = useSelector((state) => state.theme.theme);
-  const apps = useSelector((state) => state.apps.apps)
+  const apps = useSelector((state) => state.apps.apps);
+
+  const dispatch = useDispatch();
 
   console.log(theme);
   console.log(apps);
@@ -40,57 +44,57 @@ const Dock = () => {
 
   //GENERATE DOCK APPS
   const generateDivs = () => {
-    const sortedApps = [...apps].sort((a,b) => a.dockPos - b.dockPos);
-    return <>{sortedApps.map((app, i) => {
-      return (
-        <motion.div
-          key={app.id}
-          onClick={openWindow()}
-
-          initial={{ y: 100, opacity: 0 }}
-          animate={{
-            y: 0,
-            opacity: 1,
-            transition: {
-              type: "spring",
-              duration: 0.8,
-              delay: i * 0.1,
-            },
-          }}
-          whileTap={{
-            scale: 1,
-            transition: {
-              type: "spring",
-              duration: 0.2,
-              delay: 0,
-            },
-          }}
-          whileHover={{
-            scale: 1.3,
-            transition: {
-              type: "spring",
-              duration: 0.4,
-              delay: 0,
-            },
-          }}
-          className={`apps w-12 h-12 bg-gray-950 rounded-xl mr-4  flex items-center justify-center group ${app.bg}`}
-        >
-          <div className="absolute -translate-y-15 bg-gray-900/90 text-white text-xs px-3 py-1.5 rounded-lg
+    const sortedApps = [...apps].sort((a, b) => a.dockPos - b.dockPos);
+    return (
+      <>
+        {sortedApps.map((app, i) => {
+          return (
+            <motion.div
+              key={app.id}
+              onClick={() => dispatch(openWindow(app))}
+              initial={{ y: 100, opacity: 0 }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                transition: {
+                  type: "spring",
+                  duration: 0.8,
+                  delay: i * 0.1,
+                },
+              }}
+              whileTap={{
+                scale: 1,
+                transition: {
+                  type: "spring",
+                  duration: 0.2,
+                  delay: 0,
+                },
+              }}
+              whileHover={{
+                scale: 1.3,
+                transition: {
+                  type: "spring",
+                  duration: 0.4,
+                  delay: 0,
+                },
+              }}
+              className={`apps w-12 h-12 bg-gray-950 rounded-xl mr-4  flex items-center justify-center group ${app.bg}`}
+            >
+              <div
+                className="absolute -translate-y-15 bg-gray-900/90 text-white text-xs px-3 py-1.5 rounded-lg
            opacity-0 group-hover:opacity-100 group-[mousedown]:opacity-0 transition-opacity 
-           whitespace-nowrap pointer-events-none">
-              {app.name}
-          </div>
+           whitespace-nowrap pointer-events-none"
+              >
+                {app.name}
+              </div>
 
-          {app.icon}
-
-        </motion.div>
-      )
-    })}</>
+              {app.icon}
+            </motion.div>
+          );
+        })}
+      </>
+    );
   };
-
-  const openWindow = () => {
-    
-  }
 
   return (
     <motion.div
