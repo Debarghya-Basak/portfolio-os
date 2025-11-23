@@ -13,9 +13,6 @@ const Dock = () => {
 
   const dispatch = useDispatch();
 
-  console.log(theme);
-  console.log(apps);
-
   //TIME CALCULATIONS
   const [time, setTime] = useState(new Date());
 
@@ -81,9 +78,9 @@ const Dock = () => {
               className={`apps w-12 h-12 bg-gray-950 rounded-xl mr-4  flex items-center justify-center group ${app.bg}`}
             >
               <div
-                className="absolute -translate-y-15 bg-gray-900/90 text-white text-xs px-3 py-1.5 rounded-lg
+                className={`absolute -translate-y-15 bg-gray-900/90 text-white text-xs px-3 py-1.5 rounded-lg
            opacity-0 group-hover:opacity-100 group-[mousedown]:opacity-0 transition-opacity 
-           whitespace-nowrap pointer-events-none"
+           whitespace-nowrap pointer-events-none`}
               >
                 {app.name}
               </div>
