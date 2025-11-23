@@ -23,6 +23,7 @@ const WindowsSlice = createSlice({
           height: app.minHeight,
           minWidth: app.minWidth,
           minHeight: app.minHeight,
+          app: app.app,
         });
       }
     },

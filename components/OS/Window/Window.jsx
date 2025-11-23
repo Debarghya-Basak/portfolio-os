@@ -9,7 +9,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { GrBottomCorner } from "react-icons/gr";
 
-const DraggableWindow = ({ win, dispatch }) => {
+const Window = ({ win, dispatch }) => {
   const [position, setPosition] = useState({ x: win.x, y: win.y });
   const [size, setSize] = useState({ width: win.width, height: win.height });
 
@@ -144,4 +144,4 @@ const DraggableWindow = ({ win, dispatch }) => {
   );
 };
 
-export default DraggableWindow;
+export default Window;

@@ -1,3 +1,4 @@
+import Browser from "@/components/Apps/Browser/Browser";
 import { createSlice } from "@reduxjs/toolkit";
 import {
   BsFolderFill,
@@ -38,6 +39,7 @@ const initialState = {
       dockPos: 0,
       icon: <BsGlobe2 className="w-8 h-8 text-white drop-shadow-md" />,
       bg: `bg-gradient-to-br from-[#3a7bd5] via-[#3a6073] to-[#16222A] border border-white/30 shadow-lg`,
+      app: <Browser />,
     },
     {
       id: generateRandomIds(10000, 99999),
