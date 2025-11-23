@@ -131,7 +131,7 @@ const Window = ({ win, dispatch }) => {
 
       <div className="w-full h-[1px] bg-gray-200"></div>
 
-      <div className="p-2 text-black">Window content for: {win.title}</div>
+      <div className="p-2 text-black w-full h-full">{win.app}</div>
 
       {/* Resize Handle */}
       <div

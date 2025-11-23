@@ -37,7 +37,21 @@ export default function Browser() {
           Go
         </button>
       </div>
-      <iframe src={url} className="w-full h-full border-0" title="Browser" />
+
+      {/* <iframe
+        src={url}
+        onLoad={(e) => {
+          if (e.target.contentWindow.location.href === "about:blank") {
+            window.open(url, "_blank");
+          }
+        }}
+      /> */}
+
+      <iframe
+        src={url}
+        className="w-full h-full pb-10 border-0"
+        title="Browser"
+      />
     </div>
   );
 }
